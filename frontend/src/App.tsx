@@ -17,6 +17,8 @@ import {
   User,
   LogOut,
   Settings,
+  Trash2,
+  LogOut,
   Hash,
   Calendar,
   ExternalLink
@@ -52,11 +54,10 @@ export interface AuthModalProps {
   onAuth: () => void;
 }
 
-// --- Mock API ---
 const mockApi = {
   auth: {
-    signIn: async (email: string, password: string) => ({ user: { uid: '123', email } }),
-    signUp: async (email: string, password: string, displayName: string) => ({ user: { uid: '123', email } }),
+    signIn: async (email: string, _password: string) => ({ user: { uid: '123', email } }),
+    signUp: async (email: string, _password: string, _displayName: string) => ({ user: { uid: '123', email } }),
     signOut: async () => {},
   },
   content: {
@@ -66,15 +67,15 @@ const mockApi = {
       createdAt: new Date(),
     }),
     getAll: async (): Promise<Content[]> => mockContents,
-    delete: async (id: string) => {},
+    delete: async (_id: string) => {},
     search: async (query: string): Promise<Content[]> => mockContents.filter(c => 
       c.title.toLowerCase().includes(query.toLowerCase()) ||
       c.content.toLowerCase().includes(query.toLowerCase())
     ),
   },
   brain: {
-    share: async (isPublic: boolean) => ({ shareLink: isPublic ? 'https://example.com/brain/abc123' : null }),
-    getPublic: async (shareLink: string) => ({ username: 'Demo User', content: mockContents }),
+    share: async (_isPublic: boolean) => ({ shareLink: 'https://example.com/brain/abc123' }),
+    getPublic: async (_shareLink: string) => ({ username: 'Demo User', content: mockContents }),
   }
 };
 
