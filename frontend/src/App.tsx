@@ -10,13 +10,8 @@ import {
   Share2, 
   FileText, 
   Video, 
-  Twitter, 
+  X, 
   Link as LinkIcon, 
-  Tag, 
-  Trash2,
-  User,
-  LogOut,
-  Settings,
   Trash2,
   LogOut,
   Hash,
@@ -112,7 +107,7 @@ const mockContents: Content[] = [
 const ContentTypeIcon: React.FC<{ type: ContentType; className?: string }> = ({ type, className = "w-4 h-4" }) => {
   const icons: Record<ContentType, React.ElementType> = {
     document: FileText,
-    tweet: Twitter,
+    tweet: X, // Replaced Twitter with X
     youtube: Video,
     link: LinkIcon,
   };
@@ -564,7 +559,7 @@ const SecondBrainApp: React.FC = () => {
                 {[
                   { id: 'all', label: 'All Notes', icon: Hash },
                   { id: 'document', label: 'Documents', icon: FileText },
-                  { id: 'tweet', label: 'Tweets', icon: Twitter },
+                  { id: 'tweet', label: 'Tweets', icon: X },
                   { id: 'youtube', label: 'Videos', icon: Video },
                   { id: 'link', label: 'Links', icon: LinkIcon },
                 ].map((type) => {
